@@ -4,6 +4,7 @@ using System.Management.Automation;
 namespace TestcontainersPwsh
 {
     [Cmdlet(VerbsCommon.Set, "ContainerNetwork")]
+    [OutputType(typeof(ContainerBuilder))]
     public class SetContainerNetworkCmdlet : Cmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]

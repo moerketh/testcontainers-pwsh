@@ -4,6 +4,7 @@ using System.Management.Automation;
 namespace TestcontainersPwsh
 {
     [Cmdlet(VerbsCommon.Set, "ContainerAutoRemove")]
+    [OutputType(typeof(ContainerBuilder))]
     public class SetContainerAutoRemoveCmdlet : Cmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]

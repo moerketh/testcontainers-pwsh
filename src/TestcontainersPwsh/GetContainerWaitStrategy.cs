@@ -1,10 +1,12 @@
 using System.Management.Automation;
 using DotNet.Testcontainers.Builders;
 using System;
+using DotNet.Testcontainers.Configurations;
 
 namespace TestcontainersPwsh
 {
     [Cmdlet(VerbsCommon.Get, "ContainerWaitStrategy")]
+    [OutputType(typeof(IWaitForContainerOS))]
     public class GetContainerWaitStrategyCmdlet : Cmdlet
     {
         [Parameter()]

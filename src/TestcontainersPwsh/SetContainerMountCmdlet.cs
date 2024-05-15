@@ -5,6 +5,7 @@ using System.Management.Automation;
 namespace TestcontainersPwsh
 {
     [Cmdlet(VerbsCommon.Set, "ContainerMount")]
+    [OutputType(typeof(ContainerBuilder))]
     public class SetContainerMountCmdlet : Cmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]

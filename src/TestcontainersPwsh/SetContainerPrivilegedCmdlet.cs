@@ -4,6 +4,7 @@ using System.Management.Automation;
 namespace TestcontainersPwsh
 {
     [Cmdlet(VerbsCommon.Set, "ContainerPrivileged")]
+    [OutputType(typeof(ContainerBuilder))]
     public class SetContainerPrivilegedCmdlet : Cmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]
