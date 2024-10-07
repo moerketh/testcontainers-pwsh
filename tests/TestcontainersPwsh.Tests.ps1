@@ -82,14 +82,17 @@ Describe "ContainerBuilder Tests" {
     }
 
     It "Starts the container" {
-        
         $global:container | Start-Container
         Wait-Event Container.Started
         $global:container.Name | Should -Be "/adxSystemTest"
     }
 
+    It "Is available on mapped port" {
+         Test-Connection localhost -TcpPort 8080 | Should -Be $true
+    }
+
     It "Stops the Container" {     
-        $container | Stop-Container
+        $global:container | Stop-Container
         Wait-Event Container.Stopped        
     }
 
