@@ -1,5 +1,7 @@
 try {
-    Import-Module -Name "$PSScriptRoot\..\src\TestcontainersPwsh\TestcontainersPwsh.psd1" -Force
+    if(-not (Get-Module -Name TestcontainersPwsh)) {
+        Import-Module -Name "$PSScriptRoot\..\src\TestcontainersPwsh\TestcontainersPwsh.psd1" -Force
+    }
 } catch {
     if ($_.Exception -is [System.Reflection.ReflectionTypeLoadException]) {
         $exception = $_.Exception
