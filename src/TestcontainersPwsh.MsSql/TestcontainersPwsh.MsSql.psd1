@@ -5,7 +5,7 @@
     RootModule = @('.\bin\Debug\net8.0\TestcontainersPwsh.MsSql.dll')
     FunctionsToExport = @()
     CmdletsToExport = @(
-        'New-MsSqlContainer'
+        'New-MsSqlContainer',
         'Write-MsSqlScript'
     )
 }
