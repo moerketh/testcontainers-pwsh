@@ -52,6 +52,10 @@ Describe "KustoContainer Cmdlets Tests" {
         $localStartedTime | Should -BeLessThan $now
     }
 
+    It "Gets the connectionstring" {
+        $global:container.GetConnectionString() | Should -Not -BeNullOrEmpty
+    }
+
     It "Connects to the KustoContainer" {
         
         $response = Invoke-WebRequest -Uri $global:container.GetConnectionString() -Method Get
