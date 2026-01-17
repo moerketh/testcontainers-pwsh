@@ -1,5 +1,7 @@
 # TestContainersPwsh
 
+[![CI](https://github.com/moerketh/testcontainers-pwsh/actions/workflows/ci.yml/badge.svg)](https://github.com/moerketh/testcontainers-pwsh/actions/workflows/ci.yml)
+
 A PowerShell module that wraps [testcontainers-dotnet](https://github.com/testcontainers/testcontainers-dotnet), providing PowerShell cmdlets for managing containerized services in your development and testing workflows.
 
 ## Features
