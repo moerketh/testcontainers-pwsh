@@ -1,7 +1,6 @@
 @{
     ModuleVersion = '1.0'
     GUID = 'b985e06c-9729-404d-9565-22e502db7371'
-    PowerShellVersion = '6.0'
     RootModule = @('.\bin\Debug\net8.0\TestcontainersPwsh.dll')
     FunctionsToExport = @()
     CmdletsToExport = @(
