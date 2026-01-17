@@ -153,15 +153,26 @@ jobs:
       run: |
         $results = Invoke-ScriptAnalyzer -Path . -Recurse -Settings PSGallery -Severity Warning,Error
         
-        if ($results) {
-          Write-Host "PSScriptAnalyzer found $($results.Count) issue(s):" -ForegroundColor Yellow
-          $results | Format-Table -AutoSize
+        $filteredResults = $results | Where-Object {
+          -not (
+            ($_.RuleName -eq 'PSAvoidGlobalVars' -and $_.ScriptName -like '*Tests.ps1') -or
+            ($_.RuleName -eq 'PSAvoidUsingWriteHost' -and $_.ScriptPath -like '*/examples/*')
+          )
+        }
+        
+        if ($filteredResults) {
+          Write-Host "PSScriptAnalyzer found $($filteredResults.Count) issue(s):" -ForegroundColor Yellow
+          $filteredResults | Format-Table -AutoSize
           
-          # Fail if there are errors
-          $errors = $results | Where-Object { $_.Severity -eq 'Error' }
+          $errors = $filteredResults | Where-Object { $_.Severity -eq 'Error' }
           if ($errors) {
             Write-Host "Found $($errors.Count) error(s)" -ForegroundColor Red
             exit 1
+          }
+          
+          $warnings = $filteredResults | Where-Object { $_.Severity -eq 'Warning' }
+          if ($warnings) {
+            Write-Host "Found $($warnings.Count) warning(s)" -ForegroundColor Yellow
           }
         } else {
           Write-Host "✓ No issues found!" -ForegroundColor Green
